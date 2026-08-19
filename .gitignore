@@ -1,0 +1,36 @@
+# Python
+venv/
+venv312/
+__pycache__/
+*.pyc
+*.pyo
+.Python
+
+# Data — too large for GitHub, stored on Google Drive
+data/
+checkpoints/
+
+# Temp files from tokenizer training
+/tmp/
+
+# macOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Failed experiment scripts (not part of submission pipeline)
+scripts/scrape_amarujala_full.py
+scripts/scrape_gorkhapatra.py
+scripts/scrape_hindi_manual.py
+scripts/scrape_hindi_only.py
+scripts/scrape_hindi_rich.py
+scripts/scrape_literature.py
+scripts/scrape_manual.py
+scripts/scrape_nepali_news.py
+scripts/download_gutenberg.py
+scripts/download_missing.py
+scripts/download_ncert.py
+scripts/download_sangraha.py
+scripts/download_wikidumps.py
+scripts/extract_wikisource.py
