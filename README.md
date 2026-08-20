@@ -56,9 +56,10 @@
 
 ## Google Drive Links
 
-> **Dataset files (raw + clean + splits):** `[PASTE DRIVE LINK HERE]`  
-> **Tokenizer model files:** `[PASTE DRIVE LINK HERE]`  
-> **Phase 1 Report PDF:** `[PASTE DRIVE LINK HERE]`
+> **Dataset files (raw + clean + splits):** (https://drive.google.com/drive/folders/1jK9mWmFgvsXfYRNcSUsFZMswhbnDyawT?usp=sharing)  
+> **Tokenizer model files:** https://drive.google.com/drive/folders/1e3VWsGCksFO-zvXRelarV-l7rUyv13zj?usp=sharing
+https://drive.google.com/drive/folders/1VWh2DE18KfSic3LpLsSzbTNQodDc-oRy?usp=sharing
+> **Phase 1 Report PDF:** https://drive.google.com/file/d/1eXWpL6StjwM1FWerH9iS9vd6rJlV7gYh/view?usp=sharing
 
 The Google Drive folder contains:
 ```
