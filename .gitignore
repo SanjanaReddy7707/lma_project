@@ -9,6 +9,8 @@ __pycache__/
 # Data — too large for GitHub, stored on Google Drive
 data/
 checkpoints/
+phase2/checkpoints_H/
+phase2/checkpoints_L/
 
 # Temp files from tokenizer training
 /tmp/

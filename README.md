@@ -1,10 +1,97 @@
-# LMA Project — Phase 1: Dataset Construction & Tokenizer Training
+# LMA Project — Building Monolingual Transformer LMs in Two Indian Languages
 
 **Languages:**  
-- **Hindi (hi)** — higher-resource model  
-- **Nepali (ne)** — lower-resource model  
+- **Hindi (hi)** — higher-resource model (Model H)  
+- **Nepali (ne)** — lower-resource model (Model L)  
 
-**Task:** Build two decoder-only Transformer language models (~25M parameters each) from scratch.  
+**Task:** Build two decoder-only Transformer language models (~25M parameters each) from scratch.
+
+---
+
+## Phase 2: Model Implementation, Pretraining & Evaluation
+
+### Model Results
+
+| | Model H (Hindi) | Model L (Nepali) |
+|---|---|---|
+| Parameters | 24,446,208 | 23,130,112 |
+| Architecture | 12 layers, d=384, 6 heads | 6 layers, d=512, 8 heads |
+| Training steps | 6,500 | 12,000 |
+| Val loss | 3.6600 | 3.8211 |
+| Val PPL | 38.86 | 45.65 |
+| Val BPB | 0.5362 | 0.4635 |
+| Test PPL | 38.96 | 46.38 |
+| Test BPB | 0.5400 | 0.4661 |
+
+### Google Drive Links — Phase 2
+
+> **Model H checkpoint (best.pt)**:https://drive.google.com/file/d/14q--XzhKfME7aUWoAUR80nVWXyMCcm2I/view?usp=drive_link 
+> **Model L checkpoint (best.pt):** (https://drive.google.com/file/d/19IfW2_GGfpy1uoSGqRKKphRbtZinrOhb/view?usp=drive_link) 
+> **Phase 2 Report PDF:** https://drive.google.com/file/d/1ZeqdMhDxaGkeJFieTgNk3B2Y4lU_c1k8/view?usp=sharing
+
+### Phase 2 Reproduction Steps
+
+```bash
+# 1. Install dependencies
+source venv312/bin/activate
+pip install sacrebleu rouge-score seaborn
+
+# 2. Train Model H
+python phase2/train.py --model H
+
+# 3. Train Model L
+python phase2/train.py --model L
+
+# 4. Evaluate both models (PPL, BPB, BLEU, chrF, ROUGE-L, diversity)
+python phase2/eval_metrics.py --model H --model L
+
+# 5. Attention analysis (heatmaps, entropy, distance)
+python phase2/attention_analysis.py --model H
+python phase2/attention_analysis.py --model L
+
+# 6. Generate training curves
+python phase2/plot_training.py
+
+# 7. Generate PDF report
+python phase2/generate_phase2_report.py
+```
+
+### Phase 2 Repository Structure
+
+```
+phase2/
+├── model.py               # Decoder-only Transformer (from scratch)
+├── config_H.py            # Model H hyperparameters
+├── config_L.py            # Model L hyperparameters
+├── train.py               # Training loop with checkpoint resume
+├── dataset.py             # DataLoader for tokenized text
+├── evaluate.py            # Basic PPL + causal mask verification
+├── eval_metrics.py        # Full eval: PPL, BPB, BLEU, chrF, ROUGE-L, diversity
+├── attention_analysis.py  # Attention heatmaps, entropy, mean distance
+├── plot_training.py       # Training curve plots from JSONL logs
+├── generate_phase2_report.py  # PDF report generator
+├── logs/
+│   ├── train_H.jsonl      # Per-step training log (Model H)
+│   └── train_L.jsonl      # Per-step training log (Model L)
+├── checkpoints_H/         # Model H checkpoints (Drive link above)
+└── checkpoints_L/         # Model L checkpoints (Drive link above)
+report/
+├── Phase2_Report.pdf
+├── training_summary.png
+├── val_loss_curve.png
+├── val_ppl_curve.png
+├── train_loss_curve.png
+├── lr_schedule.png
+├── attn_Model_H_layer*.png
+├── attn_Model_L_layer*.png
+├── attn_summary_Model_H.png
+└── attn_summary_Model_L.png
+```
+
+---
+
+## Phase 1: Dataset Construction & Tokenizer Training
+
 **Phase 1 covers:** corpus collection, preprocessing, train/val/test splits, and BPE tokenizer training.
 
 ---
