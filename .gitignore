@@ -8,11 +8,15 @@ __pycache__/
 
 # Data — too large for GitHub, stored on Google Drive
 data/
+# Allow Phase 3 synthetic reasoning data (small JSONL files, must be in repo)
+!phase3/data/
+!phase3/data/**
 checkpoints/
 phase2/checkpoints_H/
 phase2/checkpoints_L/
 phase3/checkpoints_ft_H/
 phase3/checkpoints_ft_L/
+phase2/ablation/checkpoints/
 
 # Temp files from tokenizer training
 /tmp/
