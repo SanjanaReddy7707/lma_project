@@ -11,6 +11,8 @@ data/
 checkpoints/
 phase2/checkpoints_H/
 phase2/checkpoints_L/
+phase3/checkpoints_ft_H/
+phase3/checkpoints_ft_L/
 
 # Temp files from tokenizer training
 /tmp/

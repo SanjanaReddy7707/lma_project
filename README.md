@@ -293,3 +293,102 @@ All text goes through `preprocess.py` / `preprocess_extra.py`:
 6. Whitespace normalization
 
 Meaningful English proper nouns (e.g. Tata, IRCTC, Google) within Devanagari sentences are retained.
+
+---
+
+## Phase 3: Reasoning Fine-tuning & Attention Analysis
+
+### Phase 3 Results
+
+| | Model H (Hindi) | Model L (Nepali) |
+|---|---|---|
+| SFT train examples | 2,000 | 2,000 |
+| Fine-tuning steps | 500 | 500 |
+| Peak LR | 2e-5 | 2e-5 |
+| Best val EM (during SFT) | 53.0 % (step 100) | 43.0 % (step 350) |
+| Test EM — pretrained | 0.0 % | 0.0 % |
+| Test EM — fine-tuned | 37.5 % | 46.5 % |
+| Test Entity Acc — fine-tuned | ~62 % | ~68 % |
+
+### Google Drive Links — Phase 3
+
+> **Model H fine-tuned checkpoint (best_ft.pt):** <!-- TODO: upload phase3/checkpoints_ft_H/best_ft.pt and paste link here -->
+> **Model L fine-tuned checkpoint (best_ft.pt):** <!-- TODO: upload phase3/checkpoints_ft_L/best_ft.pt and paste link here -->
+> **Phase 3 Report PDF:** <!-- TODO: upload report/Phase3_Report.pdf and paste link here -->
+
+### Phase 3 Reproduction Steps
+
+```bash
+# 0. Activate venv (Python 3.12)
+source venv312/bin/activate
+
+# 1. Generate synthetic reasoning datasets (Hindi + Nepali)
+python3 phase3/generate_hindi_reasoning.py
+python3 phase3/generate_nepali_reasoning.py
+# Outputs: phase3/data/hindi_reasoning/{train,val,test}.jsonl
+#          phase3/data/nepali_reasoning/{train,val,test}.jsonl
+
+# 2. Fine-tune both models on reasoning data
+python3 phase3/finetune.py --model H   # ~15-25 min on MPS / CPU
+python3 phase3/finetune.py --model L   # ~15-25 min on MPS / CPU
+# Saves: phase3/checkpoints_ft_{H,L}/best_ft.pt
+# Logs:  phase3/logs/finetune_{H,L}.jsonl
+
+# 3. Evaluate pretrained vs. fine-tuned on the test set
+python3 phase3/eval_reasoning.py --model H --model L
+# Outputs: report/eval_reasoning_{H,L}.json
+
+# 4. Attention analysis: pretrained vs. fine-tuned heatmaps
+python3 phase3/attention_analysis_ft.py --model H
+python3 phase3/attention_analysis_ft.py --model L
+# Outputs: report/attn_ft_Model_{H,L}_layer*.png
+#          report/attn_ft_Model_{H,L}_summary.json
+
+# 5. Generate Phase 3 PDF report
+python3 phase3/generate_phase3_report.py
+# Output: report/Phase3_Report.pdf
+```
+
+### Phase 3 Hyperparameters
+
+| Hyperparameter | Value | Notes |
+|---|---|---|
+| Learning rate | 2e-5 | Lower than pretraining (1e-3) to preserve representations |
+| LR schedule | Linear warmup + cosine decay | 50 warmup steps, decay to 10% of peak |
+| Max steps | 500 | Early stopping on val EM |
+| Batch size | 32 | Same as pretraining |
+| Dropout | 0.05 | Reduced from 0.10 in pretraining |
+| Loss masking | ignore_index=-100 | Question tokens ignored; loss only on answer tokens |
+| Gradient clip | 1.0 | Same as pretraining |
+| Optimizer | AdamW | betas=(0.9, 0.95), eps=1e-8 |
+
+### Phase 3 Repository Structure
+
+```
+phase3/
+├── generate_hindi_reasoning.py    # Synthetic dataset generator (Hindi)
+├── generate_nepali_reasoning.py   # Synthetic dataset generator (Nepali)
+├── reasoning_dataset.py           # Dataset + DataLoader with SFT label masking
+├── config_ft_H.py                 # Fine-tuning config for Model H
+├── config_ft_L.py                 # Fine-tuning config for Model L
+├── finetune.py                    # SFT training loop
+├── eval_reasoning.py              # Greedy evaluation: EM + entity accuracy
+├── attention_analysis_ft.py       # Pretrained vs. fine-tuned attention comparison
+├── generate_phase3_report.py      # PDF report generator
+├── data/
+│   ├── hindi_reasoning/           # train/val/test JSONL (2000/200/200 examples)
+│   └── nepali_reasoning/          # train/val/test JSONL (2000/200/200 examples)
+├── checkpoints_ft_H/              # Fine-tuned Model H checkpoints (Drive link above)
+├── checkpoints_ft_L/              # Fine-tuned Model L checkpoints (Drive link above)
+└── logs/
+    ├── finetune_H.jsonl           # Per-eval-step training log (Model H)
+    └── finetune_L.jsonl           # Per-eval-step training log (Model L)
+report/
+├── Phase3_Report.pdf              # Final Phase 3 report (this document)
+├── eval_reasoning_H.json          # Full evaluation results (Model H)
+├── eval_reasoning_L.json          # Full evaluation results (Model L)
+├── attn_ft_Model_H_layer*.png     # Attention heatmaps Model H
+├── attn_ft_Model_L_layer*.png     # Attention heatmaps Model L
+├── attn_ft_Model_H_summary.json   # Entropy summary Model H
+└── attn_ft_Model_L_summary.json   # Entropy summary Model L
+```

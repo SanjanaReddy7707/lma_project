@@ -1,0 +1,38 @@
+{
+  "model_name": "Model_H",
+  "layer_analysed": [
+    0,
+    6,
+    11
+  ],
+  "examples": [
+    {
+      "example_idx": 0,
+      "example_prefix": "\u0930\u093e\u092e \u0915\u0940 \u0909\u092e\u094d\u0930 25 \u0938\u093e\u0932 \u0939\u0948\u0964 \u0936\u094d\u092f\u093e\u092e \u0915\u0940 \u0909\u092e\u094d\u0930 30 \u0938\u093e\u0932 \u0939\u0948\u0964 \u0915\u093f",
+      "pre_entropy": {
+        "layer0": 2.0256,
+        "layer6": 1.4687,
+        "layer11": 1.6004
+      },
+      "ft_entropy": {
+        "layer0": 2.0316,
+        "layer6": 1.3759,
+        "layer11": 1.1998
+      }
+    },
+    {
+      "example_idx": 1,
+      "example_prefix": "\u0905\u0930\u094d\u091c\u0941\u0928 \u0915\u0940 \u090a\u0901\u091a\u093e\u0908 \u0938\u094b\u0939\u0928 \u0938\u0947 \u0905\u0927\u093f\u0915 \u0939\u0948\u0964 \u0938\u094b\u0939\u0928 \u0915\u0940 \u090a\u0901\u091a\u093e\u0908 \u0935\u093f\u0915",
+      "pre_entropy": {
+        "layer0": 2.3067,
+        "layer6": 1.6437,
+        "layer11": 1.6787
+      },
+      "ft_entropy": {
+        "layer0": 2.3085,
+        "layer6": 1.5405,
+        "layer11": 1.455
+      }
+    }
+  ]
+}
