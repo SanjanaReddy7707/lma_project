@@ -1,3 +1,4 @@
+#decided hyperparameters (d_model, layers, heads) to hit ~25M params
 """
 Model H — Hindi decoder-only Transformer configuration.
 

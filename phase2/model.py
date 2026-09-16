@@ -1,3 +1,4 @@
+#built the Transformer from scratch (InputEmbedding → CausalSelfAttention → FeedForward → TransformerBlock → DecoderLM)
 """
 Decoder-only (GPT-style) Transformer language model — built from first principles.
 

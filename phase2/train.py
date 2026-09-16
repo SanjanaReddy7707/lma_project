@@ -1,3 +1,4 @@
+#wrote training loop (AdamW, cosine LR, gradient accumulation, checkpointing) → ran on Colab → produced checkpoints_H/ and checkpoints_L/
 """
 Pretraining script for Model H and Model L.
 

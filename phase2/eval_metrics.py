@@ -1,3 +1,4 @@
+#full evaluation (PPL, BPB, BLEU, chrF, ROUGE-L, diversity)
 """
 Phase 2 Evaluation — Intrinsic LM metrics + Generation quality.
 
