@@ -312,9 +312,9 @@ Meaningful English proper nouns (e.g. Tata, IRCTC, Google) within Devanagari sen
 
 ### Google Drive Links — Phase 3
 
-> **Model H fine-tuned checkpoint (best_ft.pt):** <!-- TODO: upload phase3/checkpoints_ft_H/best_ft.pt and paste link here -->
-> **Model L fine-tuned checkpoint (best_ft.pt):** <!-- TODO: upload phase3/checkpoints_ft_L/best_ft.pt and paste link here -->
-> **Phase 3 Report PDF:** <!-- TODO: upload report/Phase3_Report.pdf and paste link here -->
+> **Model H fine-tuned checkpoint (best_ft.pt):** https://drive.google.com/file/d/1AW6q-vOd5tUb_7ZNUjbgKbKoueZ5JRBM/view?usp=sharing
+> **Model L fine-tuned checkpoint (best_ft.pt):** https://drive.google.com/file/d/1dyMBT3WVFhGomogtcOqaIT2WkjBBMNKY/view?usp=sharing
+> **Phase 3 Report PDF:** (https://drive.google.com/file/d/1J6nmRR_f92sioTuq07XDqr8n0EaB6CmS/view?usp=sharing)
 
 ### Phase 3 Reproduction Steps
 
