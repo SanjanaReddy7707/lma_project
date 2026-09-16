@@ -268,7 +268,7 @@ def write_jsonl(path, records):
 if __name__ == "__main__":
     print("Generating Nepali reasoning dataset …")
 
-    train = generate_split(TRAIN_NAMES, 2000, seed=10)
+    train = generate_split(TRAIN_NAMES, 5000, seed=10)
     val   = generate_split(VAL_NAMES,   200,  seed=20)
     test  = generate_split(TEST_NAMES,  200,  seed=30)
 

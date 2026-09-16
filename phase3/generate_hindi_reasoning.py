@@ -295,7 +295,7 @@ if __name__ == "__main__":
     import collections
     print("Generating Hindi reasoning dataset …")
 
-    train = generate_split(TRAIN_NAMES, 2000, seed=1)
+    train = generate_split(TRAIN_NAMES, 5000, seed=1)
     val   = generate_split(VAL_NAMES,   200,  seed=2)
     test  = generate_split(TEST_NAMES,  200,  seed=3)
 
