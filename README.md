@@ -316,6 +316,73 @@ Meaningful English proper nouns (e.g. Tata, IRCTC, Google) within Devanagari sen
 > **Model L fine-tuned checkpoint (best_ft.pt):** https://drive.google.com/file/d/1dyMBT3WVFhGomogtcOqaIT2WkjBBMNKY/view?usp=sharing
 > **Phase 3 Report PDF:** (https://drive.google.com/file/d/1J6nmRR_f92sioTuq07XDqr8n0EaB6CmS/view?usp=sharing)
 
+---
+
+## Bonus Ablation: No Positional Embeddings (Model H)
+
+Retrains Model H from scratch with the positional embedding table removed (`InputEmbeddingNoPE`).
+All other hyperparameters identical. Parameter reduction: −98,304 (256 × 384).
+
+### Ablation Results Summary
+
+| Metric | With PE | No PE | Δ |
+|---|---|---|---|
+| Val PPL | 38.86 | 42.25 | +3.39 |
+| Test PPL | 38.96 | 42.38 | +3.42 |
+| Val BPB | 0.536 | 0.548 | +0.012 |
+| Greedy BLEU-4 | 0.93 | 0.60 | −0.33 |
+| Avg. attn entropy | 1.407 | 1.498 | +0.091 |
+| Avg. attn distance | 4.000 | 3.895 | −0.105 |
+
+### Google Drive Links — Bonus Ablation
+
+> **Ablation checkpoint (no PE, best.pt):** <!-- TODO: upload phase2/ablation/checkpoints/best.pt to Drive and paste link here -->
+
+### Ablation Reproduction Steps
+
+```bash
+source venv312/bin/activate
+
+# Train ablation model (Model H, no positional embeddings)
+python phase2/ablation/train_nope.py
+# Checkpoint: phase2/ablation/checkpoints/best.pt
+
+# Evaluate (PPL/BPB, generation, diversity)
+python phase2/ablation/eval_nope.py
+# Outputs: report/ablation_eval.json, report/ablation_curves.png
+
+# Attention analysis (heatmaps, entropy, distance)
+python phase2/ablation/attention_nope.py
+# Outputs: report/ablation_attn_*.png, report/ablation_attn_summary.json
+
+# Generate ablation PDF report
+python phase2/ablation/generate_ablation_report.py
+# Output: report/Ablation_Report.pdf
+```
+
+### Ablation Repository Structure
+
+```
+phase2/ablation/
+├── model_nope.py          # DecoderLM_NoPE: Model H without positional embedding table
+├── config_ablation.py     # Same hyperparams as Model H; separate checkpoint dir
+├── train_nope.py          # Full training loop with checkpoint resume
+├── eval_nope.py           # PPL/BPB, generation metrics, comparison table, curves plot
+├── attention_nope.py      # Side-by-side heatmaps, entropy bars, distance bars
+├── generate_ablation_report.py  # PDF report generator
+├── checkpoints/           # Ablation checkpoints (Drive link above)
+└── logs/
+    └── train_nope.jsonl   # Per-step training log
+report/
+├── Ablation_Report.pdf
+├── ablation_curves.png
+├── ablation_attn_layer{00,06,11}.png
+├── ablation_attn_entropy.png
+├── ablation_attn_distance.png
+├── ablation_eval.json
+└── ablation_attn_summary.json
+```
+
 ### Phase 3 Reproduction Steps
 
 ```bash
