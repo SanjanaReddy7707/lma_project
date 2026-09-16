@@ -118,6 +118,8 @@ report/
 | Fertility (chars/token) | 3.41 | 4.08 |
 | UNK rate | 0.00% | 0.00% |
 
+> **Vocab size rationale:** 8K was chosen for parameter efficiency within the ~25M budget. A 32K embedding table (32K × 384 × 2 = 24.6M params for Model H) would consume nearly the entire parameter budget, leaving almost nothing for transformer layers. At 8K the embedding table uses ~6.1M params, leaving ~18M for 12 transformer blocks. The 0% UNK rate on held-out validation text confirms 8K provides complete coverage of both Devanagari scripts — increasing vocab further would add parameters without improving coverage. Tokenizers were swept at 4K, 8K, 16K, 24K, and 32K; fertility gains plateau after 8K (diminishing return of only ~0.23 tok/word from 8K→32K for Hindi). Full sweep table and fertility plot are in `report/Phase1_Report.pdf` §6.1.
+
 ---
 
 ## Data Sources
@@ -307,8 +309,8 @@ Meaningful English proper nouns (e.g. Tata, IRCTC, Google) within Devanagari sen
 | Peak LR | 2e-5 | 2e-5 |
 | Best val EM (during SFT) | 53.0 % (step 100) | 43.0 % (step 350) |
 | Test EM — pretrained | 0.0 % | 0.0 % |
-| Test EM — fine-tuned | 37.5 % | 46.5 % |
-| Test Entity Acc — fine-tuned | ~62 % | ~68 % |
+| Test EM — fine-tuned | 35.5 % | 45.0 % |
+| Test Entity Acc — fine-tuned | 36.0 % | 49.0 % |
 
 ### Google Drive Links — Phase 3
 

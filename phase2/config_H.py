@@ -2,7 +2,7 @@
 """
 Model H — Hindi decoder-only Transformer configuration.
 
-Design choice: deeper-and-narrower (12 layers, d_model=512).
+Design choice: deeper-and-narrower (12 layers, d_model=384).
 Rationale: Hindi has rich morphology; deeper stacks let higher layers build
 on abstract morphological representations learned in lower layers.  A narrower
 hidden dimension keeps the total parameter budget near 25 M while still giving
