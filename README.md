@@ -336,7 +336,7 @@ All other hyperparameters identical. Parameter reduction: −98,304 (256 × 384)
 
 ### Google Drive Links — Bonus Ablation
 
-> **Ablation checkpoint (no PE, best.pt):** <!-- TODO: upload phase2/ablation/checkpoints/best.pt to Drive and paste link here -->
+> **Ablation checkpoint (no PE, best.pt):** https://drive.google.com/file/d/1z07pCCPCfYLoUXKQn_tacfZevBMa0jAI/view?usp=sharing
 
 ### Ablation Reproduction Steps
 
