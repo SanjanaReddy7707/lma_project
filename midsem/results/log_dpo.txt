@@ -1,0 +1,21 @@
+[DPO] starting from LoRA r=4 (best val EM 0.600, step 400)
+[A5] PPL base 38.86 | full-FT 44.47 | LoRA r=4 50.22
+  β=0.1: step-0 loss 0.693147 (log 2 = 0.693147), margin 0.00e+00
+  β=0.1 step   0 loss 0.6931 margin 0.000 chosen 0.000 rejected 0.000 (1s)
+  β=0.1 step  50 loss 0.6572 margin 0.774 chosen -0.203 rejected -0.977 (7s)
+  β=0.1 step 100 loss 0.6041 margin 2.418 chosen -0.039 rejected -2.457 (14s)
+  β=0.1 step 150 loss 0.5341 margin 5.024 chosen -0.099 rejected -5.123 (22s)
+  β=0.1 step 200 loss 0.6082 margin 2.575 chosen -0.977 rejected -3.551 (29s)
+  β=0.1 step 250 loss 0.5382 margin 5.024 chosen -0.475 rejected -5.499 (37s)
+  β=0.1 step 300 loss 0.5362 margin 5.444 chosen -0.855 rejected -6.299 (44s)
+[A4] β=0.1: tests {'seen_entities': 0.45, 'unseen_entities': 0.49, 'unseen_wording': 0.195} | PPL 51.07
+  β=0.05: step-0 loss 0.693147 (log 2 = 0.693147), margin 0.00e+00
+  β=0.05 step   0 loss 0.6931 margin 0.000 chosen 0.000 rejected 0.000 (0s)
+  β=0.05 step  50 loss 0.6732 margin 0.832 chosen -0.267 rejected -1.100 (7s)
+  β=0.05 step 100 loss 0.6383 margin 2.620 chosen -0.286 rejected -2.906 (13s)
+  β=0.05 step 150 loss 0.5823 margin 5.906 chosen -0.224 rejected -6.130 (19s)
+  β=0.05 step 200 loss 0.6386 margin 2.811 chosen -1.188 rejected -3.999 (26s)
+  β=0.05 step 250 loss 0.5884 margin 5.706 chosen -0.827 rejected -6.533 (34s)
+  β=0.05 step 300 loss 0.5775 margin 6.776 chosen -1.256 rejected -8.031 (45s)
+[A4] β=0.05: tests {'seen_entities': 0.445, 'unseen_entities': 0.48, 'unseen_wording': 0.185} | PPL 51.50
+[saved] figures/dpo_margin.png

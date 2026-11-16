@@ -1,3 +1,4 @@
+#manually scraped news websites → added to raw/
 """
 Targeted Nepali scrapers for confirmed working sites:
 - nepalnews.com (25,426 URLs, confirmed Nepali content)

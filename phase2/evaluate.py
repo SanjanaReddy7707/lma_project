@@ -1,3 +1,4 @@
+#basic PPL check + causal mask verification
 """
 Evaluation script for a trained DecoderLM checkpoint.
 

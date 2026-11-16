@@ -1,0 +1,42 @@
+[device] mps
+/Users/psanjana.reddy/Desktop/lma_project/lm_project/midsem/partA/train_lora.py:54: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  "max_abs_B": float(max(p.abs().max() for n, p in lora.named_parameters() if "lora_B" in n)),
+[A1] step-0 check: {'max_abs_logit_diff': 0.0, 'torch_equal': True, 'max_abs_B': 0.0, 'max_abs_A': 0.05102981999516487}
+[dataset] /Users/psanjana.reddy/Desktop/lma_project/lm_project/phase3/data/hindi_reasoning/train.jsonl: 5000 examples loaded
+[A2] full-FT memory: {'trainable_params': 24446208, 'optimizer_state_bytes': 195570160, 'device_mem_after_step1_bytes': 478530304}
+[A2] Phase 3 full FT: {'test': {'seen_entities': 0.54, 'unseen_entities': 0.355, 'unseen_wording': 0.235}, 'val_em': 0.4}
+  r= 1 step  100 loss 0.8064 val_EM 0.345 (37s)
+  r= 1 step  200 loss 0.3378 val_EM 0.510 (77s)
+  r= 1 step  300 loss 0.1951 val_EM 0.545 (111s)
+  r= 1 step  400 loss 0.2992 val_EM 0.550 (145s)
+  r= 1 step  500 loss 0.2943 val_EM 0.540 (175s)
+  r= 1 step  600 loss 0.2976 val_EM 0.550 (209s)
+  r= 1 step  700 loss 0.2386 val_EM 0.540 (238s)
+  r= 1 step  800 loss 0.2000 val_EM 0.555 (267s)
+  r= 1 step  900 loss 0.1492 val_EM 0.570 (297s)
+  r= 1 step 1000 loss 0.1912 val_EM 0.545 (326s)
+[A2] r=1: {'seen_entities': 0.56, 'unseen_entities': 0.49, 'unseen_wording': 0.28}  trainable=18,432 (0.0753%)
+  r= 4 step  100 loss 0.5822 val_EM 0.465 (61s)
+  r= 4 step  200 loss 0.1767 val_EM 0.575 (133s)
+  r= 4 step  300 loss 0.2393 val_EM 0.540 (192s)
+  r= 4 step  400 loss 0.1285 val_EM 0.600 (252s)
+  r= 4 step  500 loss 0.2044 val_EM 0.575 (313s)
+  r= 4 step  600 loss 0.2079 val_EM 0.555 (372s)
+  r= 4 step  700 loss 0.1939 val_EM 0.540 (430s)
+  r= 4 step  800 loss 0.1477 val_EM 0.555 (495s)
+  r= 4 step  900 loss 0.1398 val_EM 0.545 (540s)
+  r= 4 step 1000 loss 0.1121 val_EM 0.555 (571s)
+[A2] r=4: {'seen_entities': 0.505, 'unseen_entities': 0.575, 'unseen_wording': 0.24}  trainable=73,728 (0.3007%)
+  r=16 step  100 loss 0.1903 val_EM 0.515 (34s)
+  r=16 step  200 loss 0.1203 val_EM 0.565 (64s)
+  r=16 step  300 loss 0.2073 val_EM 0.540 (93s)
+  r=16 step  400 loss 0.1151 val_EM 0.540 (123s)
+  r=16 step  500 loss 0.1826 val_EM 0.525 (152s)
+  r=16 step  600 loss 0.0919 val_EM 0.525 (182s)
+  r=16 step  700 loss 0.1443 val_EM 0.540 (212s)
+  r=16 step  800 loss 0.0880 val_EM 0.530 (241s)
+  r=16 step  900 loss 0.0889 val_EM 0.535 (270s)
+  r=16 step 1000 loss 0.1465 val_EM 0.530 (300s)
+[A2] r=16: {'seen_entities': 0.48, 'unseen_entities': 0.49, 'unseen_wording': 0.195}  trainable=294,912 (1.192%)
+[A2] best rank by val EM: 4

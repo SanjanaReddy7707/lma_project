@@ -30,7 +30,7 @@ class InputEmbedding(nn.Module):
 
     def __init__(self, cfg):
         super().__init__()
-        self.tok_emb = nn.Embedding(cfg.vocab_size, cfg.d_model)
+        self.tok_emb = nn.Embedding(cfg.vocab_size, cfg.d_model) #converts tokens to vectors 
         # Learned absolute positional embeddings.
         # Shape: (context_len, d_model) — one vector per position index.
         # Constraint: the model cannot accept sequences longer than context_len
@@ -46,7 +46,7 @@ class InputEmbedding(nn.Module):
             f"Sequence length {T} exceeds maximum context length {self.context_len}"
         )
         # positions: (1, T) broadcast over batch
-        positions = torch.arange(T, device=idx.device).unsqueeze(0)  # (1, T)
+        positions = torch.arange(T, device=idx.device).unsqueeze(0)  # (1, T) 
         tok = self.tok_emb(idx)       # (B, T, d)
         pos = self.pos_emb(positions) # (1, T, d)  → broadcasts to (B, T, d)
         return self.drop(tok + pos)   # (B, T, d)
@@ -306,47 +306,3 @@ class DecoderLM(nn.Module):
         return total, trainable
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Quick sanity check — run with:  python model.py
-# ─────────────────────────────────────────────────────────────────────────────
-
-if __name__ == "__main__":
-    import sys, os
-    sys.path.insert(0, os.path.dirname(__file__))
-    from config_H import CONFIG_H
-    from config_L import CONFIG_L
-
-    for cfg, label in [(CONFIG_H, "Model H"), (CONFIG_L, "Model L")]:
-        model = DecoderLM(cfg)
-        total, trainable = model.count_parameters()
-        print(f"\n{'='*50}")
-        print(f"{label}  ({cfg.language})")
-        print(f"  d_model={cfg.d_model}, n_heads={cfg.n_heads}, "
-              f"n_layers={cfg.n_layers}, ffn_mult={cfg.ffn_mult}, "
-              f"context={cfg.context_len}, vocab={cfg.vocab_size}")
-        print(f"  Total params:     {total:,}")
-        print(f"  Trainable params: {trainable:,}")
-
-        # Forward pass test
-        B, T = 2, cfg.context_len
-        idx     = torch.randint(0, cfg.vocab_size, (B, T))
-        targets = torch.randint(0, cfg.vocab_size, (B, T))
-        logits, loss = model(idx, targets)
-        print(f"  Forward pass:  logits {tuple(logits.shape)}, loss {loss.item():.4f}")
-
-        # ── Causal masking verification ──────────────────────────────────
-        # Changing token at position t+1 must NOT change logits at position t.
-        model.eval()
-        idx_a = torch.randint(0, cfg.vocab_size, (1, T))
-        idx_b = idx_a.clone()
-        idx_b[0, T//2] = (idx_b[0, T//2] + 1) % cfg.vocab_size  # mutate position T//2
-
-        with torch.no_grad():
-            logits_a, _ = model(idx_a)
-            logits_b, _ = model(idx_b)
-
-        # Logits at positions 0 .. T//2 - 1 must be identical
-        check_pos = T//2 - 1
-        max_diff = (logits_a[0, :check_pos] - logits_b[0, :check_pos]).abs().max().item()
-        print(f"  Causal mask check: max logit diff at pos <{T//2} = {max_diff:.2e}  "
-              f"({'PASS ✓' if max_diff < 1e-5 else 'FAIL ✗'})")

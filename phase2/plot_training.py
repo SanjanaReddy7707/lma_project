@@ -1,3 +1,4 @@
+#read the JSONL logs and generated loss/PPL curve plots
 """
 Phase 2 — Training curve plots.
 

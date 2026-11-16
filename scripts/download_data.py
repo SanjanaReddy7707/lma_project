@@ -1,3 +1,4 @@
+#downloaded mC4 + Wikipedia for Hindi and Nepali → saved to data/hindi/raw/ and data/nepali/raw/
 from datasets import load_dataset
 from pathlib import Path
 

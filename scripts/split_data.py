@@ -1,3 +1,4 @@
+#split clean text into train/val/test → saved to data/hindi/splits/ and data/nepali/splits/
 import random
 from pathlib import Path
 

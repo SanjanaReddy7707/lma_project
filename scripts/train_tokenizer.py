@@ -1,3 +1,4 @@
+#trained BPE tokenizer on train.txt → produced hindi/tokenizer/hindi_bpe.model and nepali/tokenizer/nepali_bpe.model
 import sentencepiece as spm
 from pathlib import Path
 

@@ -1,3 +1,4 @@
+#decided hyperparameters (d_model, layers, heads) to hit ~25M params
 """
 Model L — Nepali decoder-only Transformer configuration.
 

@@ -1,3 +1,4 @@
+#wrote DataLoader to read tokenized text and create (input, target) batches
 """
 Dataset utilities for causal language model pretraining.
 
@@ -19,7 +20,7 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 import sentencepiece as spm
 
-
+##GENERATING CACHE FILE NAMES 
 def _cache_path(text_file: str, tokenizer_path: str, context_len: int) -> str:
     tok_name = os.path.splitext(os.path.basename(tokenizer_path))[0]
     base     = os.path.splitext(text_file)[0]
@@ -63,7 +64,7 @@ def build_token_cache(text_file: str, tokenizer_path: str, context_len: int,
     print(f"[dataset] Saved {len(arr):,} tokens → {cache}")
     return cache
 
-
+#Loads the .bin file and serves chunks of tokens for training.
 class TokenDataset(Dataset):
     """Memory-maps a pre-built .bin token file for fast random access."""
 
@@ -98,7 +99,7 @@ def make_dataloader(text_file, tokenizer_path, context_len, batch_size,
     return DataLoader(ds, batch_size=batch_size, shuffle=shuffle,
                       num_workers=num_workers, pin_memory=pin, drop_last=True)
 
-
+#quick test 
 if __name__ == "__main__":
     import sys
     sys.path.insert(0, os.path.dirname(__file__))

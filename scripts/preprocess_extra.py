@@ -1,3 +1,4 @@
+# cleaned all raw text (removed URLs, filtered non-Devanagari, deduplicated) → saved to data/hindi/clean/ and data/nepali/clean/
 """
 Preprocess newly scraped/downloaded files and append to clean/manual_extra.txt.
 Run this after scraping completes, then re-run split_data.py.

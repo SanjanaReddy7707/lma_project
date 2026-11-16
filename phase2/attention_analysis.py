@@ -1,3 +1,4 @@
+#extracted attention weights, plotted heatmaps, computed entropy and distance
 """
 Phase 2 — Attention Analysis.
 

@@ -1,0 +1,26 @@
+{
+  "judge": "microsoft/Phi-3.5-mini-instruct",
+  "n_pairs": 30,
+  "category_counts": {
+    "short_right_long_wrong": 6,
+    "short_wrong_long_right": 10,
+    "both_right": 6,
+    "both_wrong": 8
+  },
+  "position_bias_rate": 0.26666666666666666,
+  "position_flips": 8,
+  "order_consistent_pairs": 22,
+  "order_consistent_with_unique_gt": 12,
+  "agreement_with_checker": 0.6666666666666666,
+  "agreement_count": 8,
+  "cohens_kappa": 0.0,
+  "longer_answer_win_rate": 0.6666666666666666,
+  "longer_answer_wins": 40,
+  "n_verdicts": 60,
+  "letter_A_rate": 0.5333333333333333,
+  "short_right_long_wrong": {
+    "n": 6,
+    "judge_picked_short_both_orders": 0,
+    "judge_picked_long_both_orders": 4
+  }
+}

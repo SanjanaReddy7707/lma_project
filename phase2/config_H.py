@@ -30,7 +30,7 @@ Revised with d_model=384, n_heads=6, ffn_mult=4, n_layers=12, context=256:
   Total ≈ 3.07 + 12 × 1.77 ≈ 24.3 M  ✓
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass #for __init__
 
 @dataclass
 class ModelConfig:

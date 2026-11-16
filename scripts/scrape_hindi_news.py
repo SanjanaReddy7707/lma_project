@@ -1,3 +1,4 @@
+#manually scraped news websites → added to raw/
 """
 Hindi news scraper: prabhat khabar, BBC Hindi, Dainik Jagran, NDTV Hindi
 Target: manual Hindi tokens for 20% requirement.

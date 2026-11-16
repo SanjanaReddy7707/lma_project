@@ -1,0 +1,58 @@
+[transformers] This model config has set a `rope_parameters['original_max_position_embeddings']` field, to be used together with `max_position_embeddings` to determine a scaling factor. Please set the `factor` field of `rope_parameters`with this ratio instead -- we recommend the use of this field over `original_max_position_embeddings`, as it is compatible with most model architectures.
+Loading weights:   0%|          | 0/195 [00:00<?, ?it/s]Loading weights:   1%|          | 1/195 [00:00<01:09,  2.81it/s]Loading weights:   3%|▎         | 5/195 [00:00<00:15, 12.48it/s]Loading weights:   4%|▍         | 8/195 [00:00<00:13, 14.37it/s]Loading weights:   5%|▌         | 10/195 [00:00<00:12, 14.90it/s]Loading weights:   6%|▌         | 12/195 [00:01<00:17, 10.36it/s]Loading weights:   9%|▊         | 17/195 [00:01<00:13, 12.77it/s]Loading weights:  12%|█▏        | 23/195 [00:01<00:12, 13.85it/s]Loading weights:  15%|█▍        | 29/195 [00:02<00:12, 13.62it/s]Loading weights:  18%|█▊        | 35/195 [00:02<00:11, 14.39it/s]Loading weights:  21%|██        | 41/195 [00:02<00:09, 15.42it/s]Loading weights:  24%|██▍       | 47/195 [00:03<00:11, 13.17it/s]Loading weights:  27%|██▋       | 53/195 [00:03<00:10, 14.00it/s]Loading weights:  30%|███       | 59/195 [00:04<00:09, 14.73it/s]Loading weights:  33%|███▎      | 65/195 [00:04<00:08, 14.46it/s]Loading weights:  36%|███▋      | 71/195 [00:05<00:08, 14.93it/s]Loading weights:  39%|███▉      | 77/195 [00:05<00:07, 14.97it/s]Loading weights:  43%|████▎     | 83/195 [00:05<00:07, 15.27it/s]Loading weights:  46%|████▌     | 89/195 [00:06<00:05, 17.69it/s]Loading weights:  49%|████▊     | 95/195 [00:06<00:05, 17.50it/s]Loading weights:  52%|█████▏    | 101/195 [00:06<00:05, 16.95it/s]Loading weights:  55%|█████▍    | 107/195 [00:07<00:05, 15.95it/s]Loading weights:  58%|█████▊    | 113/195 [00:07<00:05, 16.27it/s]Loading weights:  61%|██████    | 119/195 [00:08<00:04, 15.43it/s]Loading weights:  64%|██████▍   | 125/195 [00:08<00:04, 15.17it/s]Loading weights:  67%|██████▋   | 131/195 [00:08<00:04, 15.38it/s]Loading weights:  70%|███████   | 137/195 [00:09<00:03, 15.49it/s]Loading weights:  73%|███████▎  | 143/195 [00:09<00:03, 15.05it/s]Loading weights:  76%|███████▋  | 149/195 [00:10<00:03, 15.32it/s]Loading weights:  79%|███████▉  | 155/195 [00:10<00:02, 14.75it/s]Loading weights:  83%|████████▎ | 161/195 [00:10<00:02, 14.03it/s]Loading weights:  86%|████████▌ | 167/195 [00:11<00:01, 14.16it/s]Loading weights:  89%|████████▊ | 173/195 [00:11<00:01, 13.29it/s]Loading weights:  92%|█████████▏| 179/195 [00:12<00:01, 12.12it/s]Loading weights:  95%|█████████▍| 185/195 [00:12<00:00, 12.40it/s]Loading weights:  98%|█████████▊| 191/195 [00:13<00:00, 13.33it/s]Loading weights: 100%|██████████| 195/195 [00:13<00:00, 14.68it/s]
+P01 both_right               order1→direct order2→cot   
+P02 both_wrong               order1→direct order2→cot   
+P03 both_wrong               order1→cot    order2→cot   
+P04 both_wrong               order1→direct order2→direct
+P05 short_wrong_long_right   order1→cot    order2→cot   
+P06 both_right               order1→cot    order2→cot   
+P07 short_wrong_long_right   order1→cot    order2→cot   
+P08 both_wrong               order1→direct order2→direct
+P09 short_wrong_long_right   order1→direct order2→cot   
+P10 both_right               order1→cot    order2→cot   
+P11 both_right               order1→cot    order2→direct
+P12 short_wrong_long_right   order1→cot    order2→cot   
+P13 short_wrong_long_right   order1→cot    order2→cot   
+P14 short_wrong_long_right   order1→cot    order2→cot   
+P15 short_wrong_long_right   order1→cot    order2→cot   
+P16 both_right               order1→direct order2→direct
+P17 short_wrong_long_right   order1→cot    order2→cot   
+P18 both_right               order1→direct order2→direct
+P19 short_right_long_wrong   order1→cot    order2→cot   
+P20 short_wrong_long_right   order1→cot    order2→cot   
+P21 short_wrong_long_right   order1→direct order2→cot   
+P22 short_right_long_wrong   order1→cot    order2→cot   
+P23 short_right_long_wrong   order1→cot    order2→direct
+P24 short_right_long_wrong   order1→cot    order2→cot   
+P25 short_right_long_wrong   order1→cot    order2→cot   
+P26 short_right_long_wrong   order1→cot    order2→direct
+P27 both_wrong               order1→direct order2→direct
+P28 both_wrong               order1→cot    order2→cot   
+P29 both_wrong               order1→direct order2→direct
+P30 both_wrong               order1→direct order2→cot   
+{
+  "judge": "microsoft/Phi-3.5-mini-instruct",
+  "n_pairs": 30,
+  "category_counts": {
+    "short_right_long_wrong": 6,
+    "short_wrong_long_right": 10,
+    "both_right": 6,
+    "both_wrong": 8
+  },
+  "position_bias_rate": 0.26666666666666666,
+  "position_flips": 8,
+  "order_consistent_pairs": 22,
+  "order_consistent_with_unique_gt": 12,
+  "agreement_with_checker": 0.6666666666666666,
+  "agreement_count": 8,
+  "cohens_kappa": 0.0,
+  "longer_answer_win_rate": 0.6666666666666666,
+  "longer_answer_wins": 40,
+  "n_verdicts": 60,
+  "letter_A_rate": 0.5333333333333333,
+  "short_right_long_wrong": {
+    "n": 6,
+    "judge_picked_short_both_orders": 0,
+    "judge_picked_long_both_orders": 4
+  }
+}

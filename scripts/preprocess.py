@@ -1,3 +1,4 @@
+# cleaned all raw text (removed URLs, filtered non-Devanagari, deduplicated) → saved to data/hindi/clean/ and data/nepali/clean/
 import re
 import unicodedata
 from pathlib import Path
